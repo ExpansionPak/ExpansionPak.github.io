@@ -12,10 +12,10 @@ async function fetchGitHubProjects() {
         const repos = await response.json();
         container.innerHTML = ''; // Clear loading text
 
-        // Filter out forks if you only want original projects
-        const sourceRepos = repos.filter(repo => !repo.fork);
+        // We do have forks mate!
+        // const sourceRepos = repos.filter(repo => !repo.fork);
 
-        sourceRepos.forEach(repo => {
+        repos.forEach(repo => {
             const card = document.createElement('div');
             card.className = 'project-card';
             
