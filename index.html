@@ -29,23 +29,27 @@
         
         .hero-background {
           position: absolute;
-          /* Anchor to exact center */
           top: 50%;
           left: 50%;
-          
-          /* Make it a large square so rotation remains uniform */
-          width: 150vmax; 
+          width: 150vmax;
           height: 150vmax;
-          
-          /* Offset by half its size to center the rotation axis */
           margin-top: -75vmax;
           margin-left: -75vmax;
         
-          background: linear-gradient(45deg, #ff007f, #7f00ff, #00d4ff, #ff007f);
-          background-size: 200% 200%; /* Keeps gradient smooth without over-stretching */
-          
-          animation: rotateGradient 10s linear infinite;
+          /* Smooth conic transition using exact retro colors */
+          background: conic-gradient(
+            from 0deg,
+            #C81928 0deg,   /* Red */
+            #4B508F 90deg,  /* Blue */
+            #28C217 180deg, /* Green */
+            #D2B41E 270deg, /* Yellow */
+            #C81928 360deg  /* Back to Red */
+          );
+        
+          /* Slowed down from 10s to 30s for a calm, ambient feel */
+          animation: rotateGradient 30s linear infinite;
           transform-origin: center center;
+          filter: blur(40px);
         }
         
         @keyframes rotateGradient {
@@ -111,6 +115,55 @@
         .cta-button:hover {
             background-color: #444;
         }
+
+        /* Container for the lineup */
+        .console-lineup {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+          margin: 40px auto 20px auto;
+        }
+        
+        /* Individual console card (borderless glassmorphism) */
+        .console-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 18px 24px;
+          min-width: 110px;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(8px);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          transition: all 0.3s ease;
+        }
+        
+        /* Subtle float effect on hover */
+        .console-item:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.9);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Console logo sizing */
+        .console-logo {
+          height: 40px;
+          width: auto;
+          object-fit: contain;
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+          margin-bottom: 8px;
+        }
+        
+        /* Label styling */
+        .console-name {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #333;
+          letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -127,10 +180,31 @@
 
     <!-- Bottom Half: Clean Content Area -->
     <main class="content-section">
-        <h2>Welcome to Our Organization</h2>
-        <p>Placeholder</p>
-        <a href="#" class="cta-button">Explore Repository</a>
-    </main>
+        <h2>ExpansionPak</h2>
+        <p>Hello there! Just a bunch of nerds doing what <b>Nintendon't<b>. </p>
+
+  <div class="console-lineup">
+    <div class="console-item">
+      <img src="https://upload.wikimedia.org/wikipedia/en/2/2d/Nintendo_64_%28logo%29.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Nintendo 64" class="console-logo" />
+      <span class="console-name">Nintendo 64</span>
+    </div>
+  
+    <div class="console-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Nintendo_GameCube_symbol_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="GameCube" class="console-logo" />
+      <span class="console-name">GameCube</span>
+    </div>
+  
+    <div class="console-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Wii.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Wii" class="console-logo" />
+      <span class="console-name">Wii</span>
+    </div>
+  
+    <div class="console-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/WiiU.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Wii U" class="console-logo" />
+      <span class="console-name">Wii U</span>
+    </div>
+  </div>
+      
 
 </body>
 </html>
